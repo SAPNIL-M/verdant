@@ -1,0 +1,52 @@
+# Entire Checkpoints Configuration for Verdant
+# Captures autonomous agent transcripts, checkpoints, and execution traces
+
+version: 1
+project:
+  name: "Verdant"
+  slug: "verdant-touch-grass"
+  description: "AI-Powered Micro-Sanctuary Discovery Agent & Outdoor Disconnect Companion"
+  author: "Verdant AI Team"
+
+technologies:
+  - id: "mastra"
+    name: "Mastra Framework"
+    description: "TypeScript agent framework orchestrating tools, memory, and sensory outdoor missions"
+  - id: "tiger-data"
+    name: "Tiger Data (pgvector)"
+    description: "PostgreSQL with pgvector for 768-dimensional semantic spatial search"
+  - id: "entire"
+    name: "Entire Checkpoints CLI"
+    description: "Entire Checkpoints CLI recording development sessions and agent runtime traces"
+
+agent:
+  framework: "@mastra/core"
+  reasoning_model: "google/gemini-2.5-flash"
+  embedding_model: "google/text-embedding-004"
+  database: "Tiger Data (PostgreSQL + pgvector)"
+  entrypoint: "src/mastra/index.ts"
+
+tracking:
+  include:
+    - "src/mastra/**"
+    - "src/db/**"
+    - "src/app/api/agent/**"
+    - "src/lib/**"
+    - "scripts/**"
+  exclude:
+    - "node_modules/**"
+    - ".next/**"
+    - ".env*"
+    - "dist/**"
+
+checkpoints:
+  auto_record: true
+  export_format: "jsonl"
+  storage_dir: ".entire/checkpoints"
+  tags:
+    - "verdant"
+    - "touch-grass"
+    - "mastra"
+    - "tiger-data"
+    - "entire"
+    - "screen-fatigue"
