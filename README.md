@@ -1,7 +1,6 @@
-# Verdant 🌿
+# Verdant 🌿: The Anti-Screen Agent
 
-> **The Anti-Screen AI Agent That Finds Micro-Sanctuaries in <30s and Locks Your Device to Touch Grass.**  
-> *Rediscover nature within 5–15 minutes. Minimize screen time under 30 seconds.*
+> **Rediscover nature within 5–15 minutes. Minimize screen time under 30 seconds.**
 
 [![Hacktoberfest 2026](https://img.shields.io/badge/Hacktoberfest_2026-Week_1_Touch_Grass-ff7849?style=for-the-badge&logo=hacktoberfest&logoColor=white)](https://dev.to/challenges/hacktoberfest-week1-2026-10-05)
 [![Mastra](https://img.shields.io/badge/Framework-Mastra_1.75-2dd4bf?style=for-the-badge)](https://mastra.ai)

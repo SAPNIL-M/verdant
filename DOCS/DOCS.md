@@ -1,5 +1,5 @@
 ---
-title: "Verdant 🌿: The Anti-Screen AI Agent That Discovers Micro-Sanctuaries in <30s and Locks Your Device to Touch Grass"
+title: "Verdant 🌿: The Anti-Screen Agent"
 published: true
 tags: devchallenge, hf26challenge, mastra, postgresql
 cover_image: https://raw.githubusercontent.com/SAPNIL-M/verdant/master/public/screenshots/cover-image.png
