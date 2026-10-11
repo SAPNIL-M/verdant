@@ -29,8 +29,10 @@ Most mindfulness and meditation apps fail because **they keep you staring at you
 
 ## 📹 Video Walkthrough
 
-> 🎥 **[Watch the Complete Verdant Walkthrough & Field Test](YOUR_VIDEO_URL_HERE)**  
-> *(Experience the full 30-second flow: mood selection, Tiger Data vector search, live GPS discovery, and fullscreen Disconnect Lockout Mode).*
+[![Watch the Verdant Walkthrough & Field Test](https://raw.githubusercontent.com/SAPNIL-M/verdant/master/public/screenshots/cover-image.png)](https://youtu.be/h5mJznaew9E)
+
+> 🎥 **[Click here to watch the full walkthrough on YouTube](https://youtu.be/h5mJznaew9E)**  
+> *(Experience the complete 30-second flow: mood selection, Tiger Data vector search, live GPS discovery, and fullscreen Disconnect Lockout Mode).*
 
 ---
 
