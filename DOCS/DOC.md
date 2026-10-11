@@ -65,6 +65,17 @@ Verdant doesn't want your attention. It wants you to put your phone away, step a
 
 ## Demo
 
+### 📹 Video Walkthrough
+<!-- Paste your YouTube, Loom, or direct video demo link here -->
+<!-- YouTube Embed: {% youtube YOUR_YOUTUBE_VIDEO_ID %} -->
+<!-- Loom Embed:    {% loom YOUR_LOOM_ID %} -->
+<!-- Direct Link:   [![Watch Video Demo](https://raw.githubusercontent.com/SAPNIL-M/verdant/master/public/screenshots/cover-image.png)](YOUR_VIDEO_URL) -->
+
+> 🎥 **[Watch the Full Video Walkthrough on YouTube / Loom](YOUR_VIDEO_URL_HERE)**  
+> *(Experience the complete 30-second flow: mood selection, Tiger Data vector search, live GPS discovery, and fullscreen Disconnect Lockout Mode).*
+
+---
+
 ### Local Setup & Live Experience
 You can run Verdant locally in under 60 seconds:
 
