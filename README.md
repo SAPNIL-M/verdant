@@ -10,6 +10,8 @@
 [![Next.js](https://img.shields.io/badge/Next.js-16_App_Router-black?style=for-the-badge&logo=nextdotjs)](https://nextjs.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
+![Verdant Outdoor Micro-Sanctuary Cover](./public/screenshots/cover-image.png)
+
 ---
 
 ## 🍃 Why Verdant?

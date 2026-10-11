@@ -2,7 +2,10 @@
 title: "Verdant 🌿: The Anti-Screen AI Agent That Discovers Micro-Sanctuaries in <30s and Locks Your Device to Touch Grass"
 published: true
 tags: devchallenge, hf26challenge, mastra, postgresql
+cover_image: https://raw.githubusercontent.com/SAPNIL-M/verdant/master/public/screenshots/cover-image.png
 ---
+
+![Verdant Outdoor Sunlight Sanctuary](https://raw.githubusercontent.com/SAPNIL-M/verdant/master/public/screenshots/cover-image.png)
 
 *This is a submission for the [Hacktoberfest Open-Source AI Challenge Week 1: Touch Grass](https://dev.to/challenges/hacktoberfest-week1-2026-10-05)*
 
