@@ -1,144 +1,156 @@
 # Verdant 🌿
 
-> **AI-Powered Micro-Sanctuary Discovery Agent & Outdoor Disconnect Companion**  
+> **The Anti-Screen AI Agent That Finds Micro-Sanctuaries in <30s and Locks Your Device to Touch Grass.**  
 > *Rediscover nature within 5–15 minutes. Minimize screen time under 30 seconds.*
 
-[![Mastra](https://img.shields.io/badge/Framework-Mastra_1.75-teal)](https://mastra.ai)
-[![Tiger Data](https://img.shields.io/badge/Database-Tiger_Data_(pgvector)-2ea44f)](https://tigerdata.io)
-[![Entire](https://img.shields.io/badge/Trace_CLI-Entire_Checkpoints-blue)](https://entire.dev)
-[![Next.js](https://img.shields.io/badge/Next.js-16_App_Router-black)](https://nextjs.org)
+[![Hacktoberfest 2026](https://img.shields.io/badge/Hacktoberfest_2026-Week_1_Touch_Grass-ff7849?style=for-the-badge&logo=hacktoberfest&logoColor=white)](https://dev.to/challenges/hacktoberfest-week1-2026-10-05)
+[![Mastra](https://img.shields.io/badge/Framework-Mastra_1.75-2dd4bf?style=for-the-badge)](https://mastra.ai)
+[![Tiger Data](https://img.shields.io/badge/Database-Tiger_Data_(pgvector)-2ea44f?style=for-the-badge)](https://tigerdata.io)
+[![Entire](https://img.shields.io/badge/Trace_CLI-Entire_Checkpoints-3b82f6?style=for-the-badge)](https://entire.dev)
+[![Next.js](https://img.shields.io/badge/Next.js-16_App_Router-black?style=for-the-badge&logo=nextdotjs)](https://nextjs.org)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
 ---
 
-## 🍃 The Problem & Philosophy
+## 🍃 Why Verdant?
 
-Software engineers and knowledge workers spend **10+ hours a day** glued to screens. Screen glare, unrelenting Slack pings, and cognitive burnout lead to chronic digital fatigue.
+Software engineers and digital creators spend **10+ hours a day** glued to monitors. Blue light fatigue, unrelenting Slack notifications, and mental fragmentation lead to chronic burnout.
 
-Most digital detox and wellness apps fail because **they keep you staring at your phone**—reading endless articles, tracking gamified streaks, or browsing maps.
+Most mindfulness and meditation apps fail because **they keep you staring at your phone**—navigating menus, reading articles, or tracking gamified streaks.
 
 **Verdant flips this paradigm with a radical 30-Second Rule:**
-1. **3-Second Input**: Pick your nervous system state (*Screen Glare*, *Need Sunlight*, *Overthinking*, *Quiet Solitude*) and available minutes (5m to 30m).
-2. **Instant Micro-Sanctuary Recommendation**: In under 1 second, the Mastra agent queries Tiger Data's `pgvector` index to locate a secluded pocket park, quiet bench, or urban grove within walking distance and provides a 4-step sensory mindfulness mission.
-3. **Physical Disconnect Lockout**: Click **"Start Walk & Disconnect"** to activate a dimmed fullscreen offline countdown with synthesized Tibetan singing bowl chimes. The app directs you to lock your screen, pocket your phone, and look up at the tree canopy.
+1. **3-Second Input**: Pick your nervous system state (*Screen Glare*, *Need Sunlight*, *Overthinking*, *Quiet Solitude*) and available walk minutes (5m to 30m).
+2. **Instant Micro-Sanctuary Recommendation**: In under 1 second, the Mastra agent queries Tiger Data's `pgvector` index or live OpenStreetMap GPS coordinates to locate a secluded pocket park or shaded bench near you.
+3. **Tactile Screen-Free Sensory Protocol**: A 4-step mindfulness mission that engages hearing, touch, and peripheral sight so you don't look at your device while walking.
+4. **Physical Disconnect Lockout**: Click **"Start Walk & Disconnect"** to activate a dimmed fullscreen countdown with synthesized Tibetan singing bowl chimes. You are instructed to lock your screen, pocket your phone, and look up at the tree canopy.
 
 ---
 
-## 🏗️ Architecture & Technology Stack
+## 📸 Visual Walkthrough
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                           VERDANT ARCHITECTURE                              │
-└─────────────────────────────────────────────────────────────────────────────┘
-          │
-          ▼
-   [Next.js 16 UI] ──(3s Input: Mood + Minutes)
-          │
-          ▼
-  [@mastra/core Agent: verdantAgent]
-     ├── Tool 1: searchSanctuariesTool
-     │        │
-     │        ▼
-     │   [Tiger Data Cloud (PostgreSQL + pgvector)]
-     │   Vector Cosine Distance: (embedding <=> $1::vector)
-     │   Indexes: IVFFlat (embedding vector_cosine_ops)
-     │
-     └── Tool 2: generateSensoryMissionTool
-              │
-              ▼
-         [Tactile Screen-Free Sensory Protocol Generator]
-          │
-          ▼
-   [Disconnect Mode Fullscreen Lockout + Web Audio Zen Chime]
-          │
-          ▼
-   [Entire Checkpoints CLI (`entire`)]: Session transcripts & checkpoints
-```
+### 1. Instant 3-Second Mood & Duration Selection
+Select your restorative need, slide your walking budget, and choose whether to discover live parks near your GPS coordinates or query Tiger Data's pocket sanctuaries:
 
-### 1. Mastra Framework (`@mastra/core`)
-- **Agent Orchestration**: Defined in [`src/mastra/agents/sanctuaryAgent.ts`](file:///d:/dev/ai%20engineer/verdant/src/mastra/agents/sanctuaryAgent.ts) using `@mastra/core/agent`. Configured with `google/gemini-2.5-flash` model specifications and strict screen-time minimization system prompt.
-- **Custom Tools**:
-  - [`searchSanctuariesTool`](file:///d:/dev/ai%20engineer/verdant/src/mastra/tools/searchSanctuaries.ts): Accepts user mood, walk constraint, and quiet preferences. Generates 768-dim query embeddings and retrieves nearest sanctuaries.
-  - [`generateSensoryMissionTool`](file:///d:/dev/ai%20engineer/verdant/src/mastra/tools/sensoryMission.ts): Synthesizes tactile, non-visual mindfulness activities (e.g. counting 3 non-mechanical bird calls, touching cold limestone or bark).
-- **Mastra Instance**: Initialized in [`src/mastra/index.ts`](file:///d:/dev/ai%20engineer/verdant/src/mastra/index.ts).
-
-### 2. Tiger Data (PostgreSQL + `pgvector`)
-- **Spatial Semantic Database**: Connected via [`src/db/client.ts`](file:///d:/dev/ai%20engineer/verdant/src/db/client.ts) to Tiger Data / Timescale PostgreSQL.
-- **768-Dimensional Embeddings**: Schema in [`src/db/schema.sql`](file:///d:/dev/ai%20engineer/verdant/src/db/schema.sql) enables `CREATE EXTENSION IF NOT EXISTS vector;` and defines `embedding vector(768)`.
-- **Sub-Millisecond Cosine Distance**:
-  ```sql
-  SELECT id, name, category, estimated_walk_mins, shade_rating, quiet_rating,
-         (embedding <=> $1::vector) AS distance
-  FROM micro_sanctuaries
-  WHERE estimated_walk_mins <= $2
-  ORDER BY distance ASC
-  LIMIT 3;
-  ```
-- **IVFFlat Vector Indexing**: `CREATE INDEX sanctuary_embedding_idx ON micro_sanctuaries USING ivfflat (embedding vector_cosine_ops) WITH (lists = 10);`
-- **Automated Seeder**: [`src/db/seed.ts`](file:///d:/dev/ai%20engineer/verdant/src/db/seed.ts) populates 16 rich urban micro-sanctuaries with embeddings.
-- **Offline / Local Fallback**: When `DATABASE_URL` is omitted during local test runs, Verdant seamlessly falls back to an in-memory vector cosine distance engine without breaking the UI.
-
-### 3. Entire Checkpoints CLI (`entire`)
-- **Session & Transcript Recording**: Configured in [`entire.yaml`](file:///d:/dev/ai%20engineer/verdant/entire.yaml) to capture development checkpoints, autonomous agent modifications, and runtime execution traces.
+![Hero and Mood Selector](./public/screenshots/hero-and-mood-selector.png)
 
 ---
 
-## 🚀 Quick Start Guide
+### 2. Sub-Second Sanctuary Match & Google Directions
+Verdant matches your mood against urban nature spots with walking time, neighborhood context, ambiance notes, and instant walking directions:
+
+![Sanctuary Recommendation Card](./public/screenshots/sanctuary-recommendation-card.png)
+
+---
+
+### 3. Screen-Free Tactile Sensory Protocol
+A 4-step mindfulness mission that engages hearing, touch, and peripheral sight so you don't look at your device while walking:
+
+![Tactile Sensory Mindfulness Protocol](./public/screenshots/tactile-sensory-protocol.png)
+
+---
+
+### 4. Disconnect Mode: Fullscreen Physical Lockout
+Tapping "Start Walk & Disconnect" dims the screen, triggers a soothing Tibetan singing bowl chime via Web Audio, and prompts you to pocket your phone:
+
+![Disconnect Mode Fullscreen Lockout](./public/screenshots/disconnect-mode-lockout.png)
+
+---
+
+## 🧪 Terminal & Partner Technology Verification
+
+Verdant provides an end-to-end automated verification suite (`npm run agent:test`) testing Mastra, Tiger Data `pgvector`, Live GPS geocoding, and Entire CLI checkpoint tracking:
+
+### Part 1: Mastra Agent Registration & Tiger Data Connection
+![Terminal Partner Verification Part 1](./public/screenshots/terminal-partner-proof-1.png)
+
+### Part 2: Tiger Data Vector Distance Searches & Stress Scenarios
+![Terminal Partner Verification Part 2](./public/screenshots/terminal-partner-proof-2.png)
+
+### Part 3: Live GPS OpenStreetMap Discovery & Offline Fallback
+![Terminal Partner Verification Part 3](./public/screenshots/terminal-partner-proof-3.png)
+
+### Part 4: Entire CLI Checkpoint Session Traces
+![Entire Status Session Verification](./public/screenshots/entire-status.png)
+
+---
+
+## 🏗️ Architecture
+
+```mermaid
+flowchart TD
+    User([User in Front of Screen]) -->|Selects Mood + Minutes <3s| UI[Next.js 16 App Router]
+    
+    subgraph Mastra Agent Pipeline ["Mastra Agent Framework (@mastra/core)"]
+        Agent[verdantAgent]
+        Agent -->|Checks Coordinates| GeoDecision{Live GPS vs Tiger Data?}
+        
+        GeoDecision -->|Live Coordinates| ToolOSM[fetchLiveNearbySanctuaries<br/>OpenStreetMap Photon API]
+        GeoDecision -->|Mood & Distance| ToolTiger[searchSanctuariesTool<br/>Tiger Data pgvector]
+        
+        ToolTiger -->|Embedding <=> Cosine Distance| TigerDB[(Tiger Data Cloud<br/>Timescale PostgreSQL + pgvector)]
+        
+        ToolTiger --> SanctuaryData[Matched Micro-Sanctuary]
+        ToolOSM --> SanctuaryData
+        
+        SanctuaryData --> ToolMission[generateSensoryMissionTool]
+        ToolMission --> FinalPackage[Restorative Guidance + Mission]
+    end
+    
+    UI -->|Invokes POST /api/agent| Agent
+    FinalPackage -->|Renders Recommendation in <1s| UI
+    
+    UI -->|Click 'Start Walk & Disconnect'| DisconnectMode[Fullscreen Lockout Timer]
+    DisconnectMode -->|Web Audio API Oscillator| Chime[Tibetan Singing Bowl Zen Chime]
+    DisconnectMode -->|User Pockets Phone| Nature([Touching Grass Outdoors 🍃])
+    
+    subgraph Trace & Versioning ["Entire CLI"]
+        Entire[entire.yaml & CLI Checkpoints] -->|Records session traces| GitRefs[refs/entire/checkpoints]
+    end
+```
+
+---
+
+## 🚀 Quick Start (Under 60 Seconds)
 
 ### Prerequisites
-- Node.js 20+ (v22 recommended)
+- Node.js 20+ (Node 22 recommended)
 - (Optional) Google Gemini API Key from [Google AI Studio](https://aistudio.google.com/)
 - (Optional) Tiger Data PostgreSQL connection string from [Tiger Data Console](https://console.tigerdata.io/)
 
 ### 1. Clone & Install
 ```bash
-git clone https://github.com/your-username/verdant.git
+git clone https://github.com/SAPNIL-M/verdant.git
 cd verdant
 npm install
 ```
 
-### 2. Configure Environment Variables
-Copy `.env.example` to `.env.local`:
+### 2. Configure Environment (Optional)
 ```bash
 cp .env.example .env.local
 ```
-
-Fill in your credentials (or leave blank to use the built-in fast offline vector cache):
+Fill in your credentials (or leave empty to use the built-in fast in-memory vector cache):
 ```env
-# Google Gemini API Key (for reasoning and embeddings)
 GEMINI_API_KEY=your_gemini_api_key_here
-
-# Tiger Data PostgreSQL connection string
 DATABASE_URL=postgresql://tsdbuser:password@host.tigerdata.io:5432/tsdb?sslmode=require
 ```
 
-### 3. Seed Tiger Data pgvector (Optional)
-```bash
-npm run db:seed
-```
-
-### 4. Verify Mastra Agent Pipeline (CLI Test)
-```bash
-npm run agent:test
-```
-
-### 5. Start the Web App
+### 3. Run Development Server
 ```bash
 npm run dev
 ```
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open **[http://localhost:3000](http://localhost:3000)** in your browser.
 
 ---
 
-## 🧪 Verification & Automated Testing
-
-Verdant comes with automated verification scripts:
+## 🧪 CLI Verification Commands
 
 | Command | Purpose |
 | :--- | :--- |
-| `npm run agent:test` | Executes Mastra Agent verification with multiple stress & walk scenarios |
+| `npm run agent:test` | Runs the full verification suite across Mastra, Tiger Data, and live GPS |
 | `npm run db:seed` | Applies pgvector schema, IVFFlat index, and seeds 16 sanctuaries into Tiger Data |
 | `npm run build` | Validates TypeScript types and generates optimized Next.js production build |
-| `entire checkpoints` | Records git checkpoint and agent trace via Entire CLI |
+| `entire status` | Displays Entire CLI active tracking session and branch status |
+| `entire checkpoints` | Records development checkpoints and agent traces |
 
 ---
 
@@ -146,24 +158,22 @@ Verdant comes with automated verification scripts:
 
 ```
 verdant/
+├── DOCS/                            # Hacktoberfest submission drafts & screenshots
+│   ├── DOC.md                       # Full DEV Community submission post
+│   └── *.png                        # Screenshot captures
+├── public/screenshots/              # Clean web-safe images referenced by README & DEV
 ├── entire.yaml                      # Entire Checkpoints CLI configuration
-├── .env.example                     # Environment variables template
-├── package.json                     # Scripts & dependencies
-├── README.md                        # Documentation & project architecture
 ├── scripts/
 │   └── test-agent.ts                # Mastra Agent & vector test CLI runner
 ├── src/
 │   ├── app/
-│   │   ├── layout.tsx               # Root layout & restorative typography
+│   │   ├── layout.tsx               # Root layout & restorative styling
 │   │   ├── page.tsx                 # Main 3-step Touch Grass experience
-│   │   ├── globals.css              # Botanical palette & ambient lighting
-│   │   └── api/
-│   │       └── agent/
-│   │           └── route.ts         # Next.js API invoking Mastra agent & sessions
+│   │   └── api/agent/route.ts       # Mastra agent invocation & session logging
 │   ├── components/
-│   │   ├── Header.tsx               # Botanical header with technology badges
+│   │   ├── Header.tsx               # Botanical header with partner badges
 │   │   ├── MoodSelector.tsx         # 3-Second mood chips & duration slider
-│   │   ├── SanctuaryCard.tsx        # Recommendation card & sensory mission
+│   │   ├── SanctuaryCard.tsx        # Recommendation card & sensory protocol
 │   │   └── DisconnectModal.tsx      # Fullscreen lockout timer & prompt carousel
 │   ├── db/
 │   │   ├── client.ts                # Tiger Data pgvector pool & fallback engine
@@ -171,7 +181,8 @@ verdant/
 │   │   ├── sanctuaries-data.ts      # 16 curated urban micro-sanctuary records
 │   │   └── seed.ts                  # Automated database seeder
 │   ├── lib/
-│   │   ├── audio.ts                 # Web Audio API Tibetan singing bowl chime
+│   │   ├── audio.ts                 # Web Audio API Tibetan singing bowl synthesizer
+│   │   ├── osm.ts                   # OpenStreetMap live GPS discovery engine
 │   │   └── embeddings.ts            # Gemini text-embedding-004 generator
 │   └── mastra/
 │       ├── index.ts                 # Mastra instance definition
@@ -184,6 +195,16 @@ verdant/
 
 ---
 
+## 🏆 Hacktoberfest 2026 Partner Tracks
+
+Verdant is submitted for the **Hacktoberfest Open-Source AI Challenge: Week 1 (Touch Grass)**:
+
+- 🌟 **Best Use of Tiger Data**: Timescale PostgreSQL cloud database with `pgvector`, 768-dim embeddings, IVFFlat indexing, and sub-millisecond cosine distance.
+- 🌟 **Best Use of Mastra**: Custom `verdantAgent` with strict anti-screen system prompts and multi-tool orchestration (`searchSanctuariesTool` + `generateSensoryMissionTool`).
+- 🌟 **Best Use of Entire**: Checkpointing development trajectories and recording session traces with the `entire` CLI.
+
+---
+
 ## 🌿 License
 
-MIT License &copy; 2026 Verdant Team.
+MIT License &copy; 2026 [SAPNIL-M](https://github.com/SAPNIL-M).

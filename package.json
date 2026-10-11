@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "db:seed": "tsx src/db/seed.ts",
-    "agent:test": "tsx scripts/test-agent.ts"
+    "agent:test": "tsx scripts/test-agent.ts",
+    "entire:status": "entire status"
   },
   "dependencies": {
     "@google/genai": "^2.28.0",
