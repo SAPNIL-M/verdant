@@ -108,9 +108,9 @@ Tapping "Start Walk & Disconnect" dims the screen, triggers a Tibetan singing bo
 ![Disconnect Mode Fullscreen Lockout](https://raw.githubusercontent.com/SAPNIL-M/verdant/master/public/screenshots/disconnect-mode-lockout.png)
 
 ### Taking Verdant on a Real-World Walk
-During development, we took Verdant outside for a real-world field test. At 3:15 PM, after 6 hours of continuous coding, we opened Verdant on a mobile browser, tapped **"Screen Glare"** and **"15 minutes"**, and selected **"Use Live GPS"**. 
+During development, I took Verdant outside for a real-world field test. At 3:15 PM, after 6 hours of continuous coding, I opened Verdant on a mobile browser, tapped **"Screen Glare"** and **"15 minutes"**, and selected **"Use Live GPS"**. 
 
-Within 4 seconds, the Mastra agent discovered a neighborhood pocket park with mature oak trees located 8 minutes away. We pressed **"Start Walk & Disconnect"**, heard the soothing Tibetan singing bowl chime reverberate through our earbuds, locked the phone, put it in our pocket, and walked out the door. For the next 20 minutes, our screen stayed completely black. We touched moss-covered stone, listened to sparrows in the hedges, and returned to our desk with zero cognitive fatigue.
+Within 4 seconds, the Mastra agent discovered a neighborhood pocket park with mature oak trees located 8 minutes away. I pressed **"Start Walk & Disconnect"**, heard the soothing Tibetan singing bowl chime reverberate through my earbuds, locked the phone, put it in my pocket, and walked out the door. For the next 20 minutes, my screen stayed completely black. I touched moss-covered stone, listened to sparrows in the hedges, and returned to my desk with zero cognitive fatigue.
 
 ---
 
@@ -257,22 +257,22 @@ export function playSingingBowlChime(fundamentalFreq = 216): void {
 Verdant brings together modern open-source AI frameworks, cutting-edge cloud vector databases, and developer tracing tools:
 
 ### 1. Mastra Framework (`@mastra/core`)
-We chose Mastra as our agent runtime because of its first-class TypeScript DX, modular tool definition system, and lightweight execution model. 
-- **Tool Architecture**: Rather than monolithic prompt stuffing, we built two purpose-specific Mastra tools (`searchSanctuariesTool` and `generateSensoryMissionTool`).
+I chose Mastra as my agent runtime because of its first-class TypeScript DX, modular tool definition system, and lightweight execution model. 
+- **Tool Architecture**: Rather than monolithic prompt stuffing, I built two purpose-specific Mastra tools (`searchSanctuariesTool` and `generateSensoryMissionTool`).
 - **Prompt Guardrails**: Mastra enforces that the agent never writes long essays or asks conversational questions that keep the user interacting with the chat window. The agent is explicitly conditioned to terminate the screen interaction immediately.
 
 ### 2. Tiger Data (Timescale Cloud PostgreSQL + `pgvector`)
-Vector search shouldn't require a dedicated, expensive proprietary vector database. Tiger Data gives us robust PostgreSQL reliability with the raw speed of `pgvector`:
-- **Vector Schema**: We stored 768-dimensional embeddings generated with `text-embedding-004`.
+Vector search shouldn't require a dedicated, expensive proprietary vector database. Tiger Data gives me robust PostgreSQL reliability with the raw speed of `pgvector`:
+- **Vector Schema**: I stored 768-dimensional embeddings generated with `text-embedding-004`.
 - **IVFFlat Vector Indexing**: `CREATE INDEX sanctuary_embedding_idx ON micro_sanctuaries USING ivfflat (embedding vector_cosine_ops) WITH (lists = 10);`
-- **Hybrid Querying**: Tiger Data allows us to combine semantic cosine distance (`<=>`) with hard relational SQL predicates (`WHERE estimated_walk_mins <= $2 AND quiet_rating >= 4`) in a single query execution plan.
+- **Hybrid Querying**: Tiger Data allows me to combine semantic cosine distance (`<=>`) with hard relational SQL predicates (`WHERE estimated_walk_mins <= $2 AND quiet_rating >= 4`) in a single query execution plan.
 - **Graceful Fallback**: If `DATABASE_URL` is omitted in offline test environments, Verdant seamlessly falls back to a fast in-memory cosine engine so the user experience never crashes.
 
 ### 3. OpenStreetMap & Photon Geocoding
-To ensure Verdant works for anyone, anywhere in the world, we incorporated live GPS geocoding via OpenStreetMap. When a user clicks **"Use Live GPS"**, Verdant queries open geospatial endpoints to identify nearby municipal parks, arboretums, and green squares within walking distance, embedding and ranking them on the fly.
+To ensure Verdant works for anyone, anywhere in the world, I incorporated live GPS geocoding via OpenStreetMap. When a user clicks **"Use Live GPS"**, Verdant queries open geospatial endpoints to identify nearby municipal parks, arboretums, and green squares within walking distance, embedding and ranking them on the fly.
 
 ### 4. Entire CLI (`entire`)
-We integrated the **Entire CLI** (`entire.yaml`) to track checkpoints, autonomous commits, and session execution traces during development. With Entire enabled on our repository, all agent transitions, tool calibrations, and code modifications are versioned with transparent trace logs.
+I integrated the **Entire CLI** (`entire.yaml`) to track checkpoints, autonomous commits, and session execution traces during development. With Entire enabled on my repository, all agent transitions, tool calibrations, and code modifications are versioned with transparent trace logs.
 
 ---
 
@@ -289,7 +289,7 @@ Your mental health status (*"I am experiencing severe anxiety and sensory overlo
 Closed commercial mapping platforms prioritize sponsored pins, commercial businesses, and high-density vehicle routes. They are disincentivized to show you an unmonetized public bench under a willow tree. By building on OpenStreetMap data and self-hosted vector databases, Verdant treats quiet public micro-sanctuaries as fundamental human rights, not ad space.
 
 ### 3. Transparent AI Behavior
-Closed conversational AI assistants are programmed to maximize **session duration and daily active engagement (DAU)**. Their underlying models will deliberately prompt you with follow-up questions to keep you chatting. By utilizing Mastra and open agent tooling, we can program our agent with the exact opposite objective: **minimize screen time to <30 seconds and send the user away.**
+Closed conversational AI assistants are programmed to maximize **session duration and daily active engagement (DAU)**. Their underlying models will deliberately prompt you with follow-up questions to keep you chatting. By utilizing Mastra and open agent tooling, I was able to program my agent with the exact opposite objective: **minimize screen time to <30 seconds and send the user away.**
 
 ### 4. Zero-Cost Offline Resilience
 Because Verdant is open-source and includes offline in-memory vector fallbacks, you can run it on a laptop in airplane mode in the middle of a national park with no cell reception. It costs nothing to operate, requires no recurring SaaS subscriptions, and will remain functional forever.
@@ -298,7 +298,7 @@ Because Verdant is open-source and includes offline in-memory vector fallbacks, 
 
 ## My Agent Session
 
-We utilized the **Entire Checkpoints CLI** throughout the development and testing of Verdant. All checkpoints, session snapshots, and autonomous agent executions are tracked within the repository.
+I utilized the **Entire Checkpoints CLI** throughout the development and testing of Verdant. All checkpoints, session snapshots, and autonomous agent executions are tracked within the repository.
 
 You can inspect the Entire configuration in [`entire.yaml`](https://github.com/SAPNIL-M/verdant/blob/master/entire.yaml) and review status directly via:
 
@@ -311,7 +311,7 @@ entire checkpoints
 ```
 
 ### Verified Entire Session Status
-Here is our live session verification showing Entire CLI actively recording on branch `master`:
+Here is my live session verification showing Entire CLI actively recording on branch `master`:
 
 ![Entire Status Session Verification](https://raw.githubusercontent.com/SAPNIL-M/verdant/master/public/screenshots/entire-status.png)
 
@@ -321,7 +321,7 @@ The session traces capture the iteration from initial schema design in Tiger Dat
 
 ## Prize Categories
 
-We are officially submitting Verdant for the following featured partner tracks:
+I am officially submitting Verdant for the following featured partner tracks:
 
 ### 🏆 Best Use of Tiger Data
 - **Implementation**: Powered by Tiger Data Cloud (Timescale PostgreSQL) with the `pgvector` extension enabled.
